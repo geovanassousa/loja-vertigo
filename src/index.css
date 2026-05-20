@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Altura da faixa do header (alinhar com h-20 do Navbar) + respiro até o título da coleção */
+  --navbar-height: 5rem;
+  --below-navbar-gap: 5.5rem;
+  /* Margem da viewport (esquerda/direita iguais); escala com a largura da tela */
+  --page-gutter-x: clamp(1.25rem, 5vw, 5rem);
+}
+
+body {
+  background-color: #031022;
+  overflow-x: hidden;
+}
+
+/* Não depende do Tailwind: empurra o conteúdo para baixo da navbar fixa */
+main.main-below-fixed-nav {
+  padding-top: calc(var(--navbar-height) + var(--below-navbar-gap));
+}
+
+/* Navbar: respiro à direita (busca + sacola) — perceptível em qualquer build */
+.navbar-shell {
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(2.75rem, calc(1.25rem + env(safe-area-inset-right, 0px)));
+}
+
+@media (min-width: 768px) {
+  .navbar-shell {
+    padding-right: max(3.5rem, calc(1.5rem + env(safe-area-inset-right, 0px)));
+  }
+}
+
+@media (min-width: 1280px) {
+  .navbar-shell {
+    padding-right: max(4rem, calc(1.75rem + env(safe-area-inset-right, 0px)));
+  }
+}
+
+/* Respiro real em relação à borda da janela (evita “colado” à direita em telas ~1280px) */
+.page-horizontal-gutter {
+  padding-left: max(var(--page-gutter-x), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--page-gutter-x), env(safe-area-inset-right, 0px));
+}
