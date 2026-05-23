@@ -1,15 +1,22 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import ProductCard from "./ProductCard"
-import { shirts } from "../data/products"
 
 import { Search } from "lucide-react"
 
-export default function CategoryPage() {
+export default function CategoryPage({
+  title,
+  products,
+  addToCart,
+}) {
 
   const [search, setSearch] = useState("")
 
-  const filteredProducts = shirts.filter((product) => {
+  useEffect(() => {
+    setSearch("")
+  }, [products])
+
+  const filteredProducts = products.filter((product) => {
 
     const searchTerm = search.trim().toLowerCase()
 
@@ -45,7 +52,7 @@ export default function CategoryPage() {
           lg:items-end
           lg:justify-between
 
-          mb-20
+          mb-28
         "
       >
 
@@ -73,9 +80,11 @@ export default function CategoryPage() {
 
               font-serif
               text-white
+
+              capitalize
             "
           >
-            Camisas
+            {title}
           </h2>
 
           <p
@@ -147,6 +156,9 @@ export default function CategoryPage() {
 
       </div>
 
+      {/* ESPAÇO EDITORIAL */}
+<div className="h-16 md:h-20" />
+
       {/* PRODUTOS */}
       <div
         className="
@@ -157,24 +169,29 @@ export default function CategoryPage() {
           xl:grid-cols-4
 
           gap-x-5
-          gap-y-14
+          gap-y-16
 
           xl:gap-x-6
-          xl:gap-y-16
+          xl:gap-y-20
+
+          pt-8 
+
         "
       >
 
         {filteredProducts.length > 0 ? (
 
           filteredProducts.map((product) => (
-
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              name={product.name}
-              color={product.color}
-              price={product.price}
-            />
+            
+<ProductCard
+  key={product.id}
+  image={product.image}
+  name={product.name}
+  color={product.color}
+  price={product.price}
+  addToCart={addToCart}
+  product={product}
+/>
 
           ))
 

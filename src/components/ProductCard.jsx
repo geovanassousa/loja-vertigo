@@ -5,7 +5,9 @@ export default function ProductCard({
   image,
   name,
   color,
-  price
+  price, 
+  product,
+  addToCart
 }) {
 
   const [favorite, setFavorite] = useState(false)
@@ -90,7 +92,7 @@ export default function ProductCard({
             className="
               flex
 
-              h-[248px]
+              h-[290px]
               md:h-[268px]
               xl:h-[280px]
 
@@ -146,6 +148,7 @@ export default function ProductCard({
 
           <button
             type="button"
+            onClick={() => addToCart(product)}
             className="
               w-[min(92%,18.5rem)]
               min-w-[13.5rem]

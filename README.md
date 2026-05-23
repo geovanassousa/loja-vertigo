@@ -1,16 +1,54 @@
-# React + Vite
+# VERTIGO
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+VERTIGO é um projeto desenvolvido para a disciplina de Programação Web 1 (PWeb1), com foco na criação de uma experiência visual premium inspirada em marcas de moda contemporânea e luxury minimalism.
 
-Currently, two official plugins are available:
+O projeto representa uma loja virtual de roupas sofisticadas, utilizando apenas tecnologias front-end, com forte inspiração editorial em marcas como COS, Zara Premium, Fear of God, Farfetch e Represent.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- JavaScript
+- Vite
+- TailwindCSS
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Objetivo Acadêmico
+
+Este projeto foi desenvolvido exclusivamente para fins acadêmicos na disciplina de Programação Web 1, explorando conceitos de:
+
+- Estruturação de Interfaca
+- UX/UI
+- Design Responsivo 
+- Componentização com React
+- Organização de projeto Front-end
+
+---
+
+# Como Executar o Projeto
+
+Clone o repositório:
+
+```bash
+git clone LINK_DO_REPOSITORIO
+```
+
+Entre na pasta do projeto:
+
+```bash
+cd loja-vertigo
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Execute o projeto:
+
+```bash
+npm run dev
+```

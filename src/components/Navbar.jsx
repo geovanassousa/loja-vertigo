@@ -5,7 +5,34 @@ import {
   ShoppingBag
 } from "lucide-react"
 
-export default function Navbar() {
+export default function Navbar({
+  activeCategory,
+  setActiveCategory,
+    setIsCartOpen
+}) {
+
+  const categories = [
+    {
+      label: "Casacos",
+      value: "casacos",
+    },
+    {
+      label: "Camisas",
+      value: "camisas",
+    },
+    {
+      label: "Calças",
+      value: "calcas",
+    },
+    {
+      label: "Shorts",
+      value: "shorts",
+    },
+    {
+      label: "Acessórios",
+      value: "acessorios",
+    },
+  ]
 
   return (
 
@@ -80,6 +107,9 @@ export default function Navbar() {
                 cursor-pointer
                 object-contain
               "
+              onClick={() =>
+                setActiveCategory("camisas")
+              }
             />
 
           </div>
@@ -126,90 +156,37 @@ export default function Navbar() {
                 md:text-[15px]
 
                 tracking-[0.08em]
-
-                text-white/55
               "
             >
 
-              <a
-                href="#"
-                className="
-                  shrink-0
+              {categories.map((category) => (
 
-                  transition
-                  duration-300
+                <button
+                  key={category.value}
+                  onClick={() =>
+                    setActiveCategory(category.value)
+                  }
+                  className={`
+                    shrink-0
 
-                  hover:text-white
-                "
-              >
-                Home
-              </a>
+                    transition-all
+                    duration-300
 
-              <a
-                href="#"
-                className="
-                  shrink-0
+                    hover:text-white
 
-                  transition
-                  duration-300
+                    ${
+                      activeCategory === category.value
+                        ? "text-white"
+                        : "text-white/55"
+                    }
+                  `}
+                >
 
-                  hover:text-white
-                "
-              >
-                Casacos
-              </a>
+                  {category.label}
 
-              <a
-                href="#"
-                className="
-                  shrink-0
-                  text-white
-                "
-              >
-                Camisas
-              </a>
+                </button>
 
-              <a
-                href="#"
-                className="
-                  shrink-0
-
-                  transition
-                  duration-300
-
-                  hover:text-white
-                "
-              >
-                Calças
-              </a>
-
-              <a
-                href="#"
-                className="
-                  shrink-0
-
-                  transition
-                  duration-300
-
-                  hover:text-white
-                "
-              >
-                Shorts
-              </a>
-
-              <a
-                href="#"
-                className="
-                  shrink-0
-
-                  transition
-                  duration-300
-
-                  hover:text-white
-                "
-              >
-                Acessórios
-              </a>
+              ))}
 
             </div>
 
@@ -263,10 +240,24 @@ export default function Navbar() {
               "
             >
 
-              <ShoppingBag
-                size={21}
-                strokeWidth={1.8}
-              />
+             <button
+  type="button"
+  onClick={() => setIsCartOpen(true)}
+  className="
+    transition-all
+    duration-300
+
+    hover:scale-105
+    hover:text-white
+  "
+>
+
+  <ShoppingBag
+    size={21}
+    strokeWidth={1.8}
+  />
+
+</button>
 
             </button>
 
