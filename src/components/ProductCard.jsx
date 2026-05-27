@@ -5,9 +5,10 @@ export default function ProductCard({
   image,
   name,
   color,
-  price, 
+  price,
   product,
-  addToCart
+  addToCart,
+  setSelectedProduct
 }) {
 
   const [favorite, setFavorite] = useState(false)
@@ -18,6 +19,11 @@ export default function ProductCard({
 
       {/* CARD */}
       <div
+        onClick={(e) => {
+          if (e.target.tagName !== "BUTTON") {
+            setSelectedProduct(product)
+          }
+        }}
         className="
           relative
           bg-[#081426]

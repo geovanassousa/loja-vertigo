@@ -8,6 +8,7 @@ export default function CategoryPage({
   title,
   products,
   addToCart,
+  setSelectedProduct
 }) {
 
   const [search, setSearch] = useState("")
@@ -191,6 +192,7 @@ export default function CategoryPage({
   price={product.price}
   addToCart={addToCart}
   product={product}
+  setSelectedProduct={setSelectedProduct}
 />
 
           ))

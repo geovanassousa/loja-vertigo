@@ -8,7 +8,8 @@ import {
 export default function Navbar({
   activeCategory,
   setActiveCategory,
-    setIsCartOpen
+  setIsCartOpen,
+  setIsFavoritesOpen
 }) {
 
   const categories = [
@@ -210,23 +211,26 @@ export default function Navbar({
           >
 
             {/* FAVORITOS */}
-            <button
-              type="button"
-              className="
-                transition-all
-                duration-300
+<button
+  type="button"
+  onClick={() =>
+    setIsFavoritesOpen(true)
+  }
+  className="
+    transition-all
+    duration-300
 
-                hover:scale-105
-                hover:text-white
-              "
-            >
+    hover:scale-105
+    hover:text-white
+  "
+>
 
-              <Heart
-                size={21}
-                strokeWidth={1.8}
-              />
+  <Heart
+    size={21}
+    strokeWidth={1.8}
+  />
 
-            </button>
+</button>
 
             {/* SACOLA */}
             <button
