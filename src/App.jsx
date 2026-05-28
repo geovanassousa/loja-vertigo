@@ -39,7 +39,7 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] =
     useState(false)
 
-  // ADICIONAR PRODUTO
+
   function addToCart(product) {
     setCartItems([...cartItems, product])
   }
