@@ -1,14 +1,12 @@
-import "../styles/home.css";
+import "../styles/home.css"
+import heroImage from "../assets/casacos/moletom-azul.png"
 
-import heroImage from "../assets/casacos/moletom-azul.png";
-
-export default function Home({ setShowHome }) {
+export default function Home({ setIsHome, setActiveCategory }) {
   return (
     <div className="home-page">
 
       <section className="home-hero">
 
-        {/* TEXTO */}
         <div className="home-hero-content">
 
           <span className="home-subtitle">
@@ -29,10 +27,13 @@ export default function Home({ setShowHome }) {
           <div className="home-buttons">
 
             <button
-                className="btn-light"
-                onClick={() => setShowHome(false)}
+              className="btn-light"
+              onClick={() => {
+                setActiveCategory("camisas")
+                setIsHome(false)
+              }}
             >
-                EXPLORAR COLEÇÃO →
+              EXPLORAR COLEÇÃO →
             </button>
 
             <a href="#" className="btn-dark">
@@ -43,20 +44,13 @@ export default function Home({ setShowHome }) {
 
         </div>
 
-        {/* IMAGEM */}
         <div className="home-hero-image">
 
-            <img
-                src={heroImage}
-                alt="Moda masculina elegante"
-            />
+          <img src={heroImage} alt="Moda masculina elegante" />
 
           <div className="home-editorial">
-
             <span>EDITORIAL</span>
-
             <h3>Quiet Tailoring</h3>
-
           </div>
 
         </div>

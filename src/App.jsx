@@ -18,70 +18,47 @@ import {
 
 export default function App() {
 
-  const [activeCategory, setActiveCategory] =
-    useState("camisas")
+  const [isHome, setIsHome] = useState(true)
+  const [activeCategory, setActiveCategory] = useState("camisas")
+  const [selectedProduct, setSelectedProduct] = useState(null)
 
-  const [selectedProduct, setSelectedProduct] =
-  useState(null)
-
-  const [showHome, setShowHome] =
-  useState(true)
-
-  // SACOLA
   const [cartItems, setCartItems] = useState([])
-
   const [favoriteItems, setFavoriteItems] = useState([])
-  const [isFavoritesOpen,
-  setIsFavoritesOpen] =
-  useState(false)
 
-  // MODAL ABERTO
-  const [isCartOpen, setIsCartOpen] =
-    useState(false)
+  const [isFavoritesOpen, setIsFavoritesOpen] = useState(false)
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
-
+  // CART
   function addToCart(product) {
     setCartItems([...cartItems, product])
   }
 
-  // FAVORITOS
-function addToFavorites(product) {
-
-  const alreadyExists =
-    favoriteItems.some(
-      item => item.id === product.id
-    )
-
-  if (alreadyExists) return
-
-  setFavoriteItems([
-    ...favoriteItems,
-    product
-  ])
-
-}
-
-  // REMOVER PRODUTO
   function removeFromCart(index) {
-    const updatedCart = cartItems.filter(
-      (_, i) => i !== index
-    )
+    setCartItems(cartItems.filter((_, i) => i !== index))
+  }
 
-    setCartItems(updatedCart)
+  // FAVORITES
+  function addToFavorites(product) {
+    const alreadyExists = favoriteItems.some(item => item.id === product.id)
+    if (alreadyExists) return
+    setFavoriteItems([...favoriteItems, product])
   }
 
   function removeFavorite(index) {
+    setFavoriteItems(favoriteItems.filter((_, i) => i !== index))
+  }
 
-  const updatedFavorites =
-    favoriteItems.filter(
-      (_, i) => i !== index
-    )
+  // NAVIGATION
+  function goHome() {
+    setIsHome(true)
+    setSelectedProduct(null)
+  }
 
-  setFavoriteItems(
-    updatedFavorites
-  )
-
-}
+  function changeCategory(category) {
+    setActiveCategory(category)
+    setSelectedProduct(null)
+    setIsHome(false)
+  }
 
   const categories = {
     camisas: shirts,
@@ -92,72 +69,60 @@ function addToFavorites(product) {
   }
 
   return (
-
     <div className="min-h-screen bg-[#06152B] text-white">
 
       <Navbar
-  activeCategory={activeCategory}
-  setActiveCategory={setActiveCategory}
-  setIsCartOpen={setIsCartOpen}
-  setIsFavoritesOpen={setIsFavoritesOpen}
-/>
+        activeCategory={activeCategory}
+        setActiveCategory={changeCategory}
+        setIsCartOpen={setIsCartOpen}
+        setIsFavoritesOpen={setIsFavoritesOpen}
+        goHome={goHome}
+        setIsHome={setIsHome}
+        setSelectedProduct={setSelectedProduct}
+      />
 
       <main className="main-below-fixed-nav page-horizontal-gutter">
 
-  {showHome ? (
+        {isHome ? (
+          <Home
+            setIsHome={setIsHome}
+            setActiveCategory={setActiveCategory}
+          />
+        ) : selectedProduct ? (
+          <ProductPage
+            product={selectedProduct}
+            addToCart={addToCart}
+            addToFavorites={addToFavorites}
+            setSelectedProduct={setSelectedProduct}
+          />
+        ) : (
+          <CategoryPage
+            title={activeCategory}
+            products={categories[activeCategory] || shirts}
+            addToCart={addToCart}
+            setSelectedProduct={setSelectedProduct}
+          />
+        )}
 
-    <Home setShowHome={setShowHome} />
+      </main>
 
-  ) : !selectedProduct ? (
-
-    <CategoryPage
-      title={activeCategory}
-      products={categories[activeCategory]}
-      addToCart={addToCart}
-      setSelectedProduct={setSelectedProduct}
-    />
-
-  ) : (
-
-    <ProductPage
-      product={selectedProduct}
-      addToCart={addToCart}
-      addToFavorites={addToFavorites}
-      setSelectedProduct={setSelectedProduct}
-    />
-
-  )}
-
-</main>
-
-      {/* ESPAÇO EDITORIAL */}
       <div className="h-32 md:h-44 xl:h-48" />
 
       <FavoritesDrawer
-  isFavoritesOpen={
-    isFavoritesOpen
-  }
-  setIsFavoritesOpen={
-    setIsFavoritesOpen
-  }
-  favoriteItems={
-    favoriteItems
-  }
-  removeFavorite={
-    removeFavorite
-  }
-/>
+        isFavoritesOpen={isFavoritesOpen}
+        setIsFavoritesOpen={setIsFavoritesOpen}
+        favoriteItems={favoriteItems}
+        removeFavorite={removeFavorite}
+      />
 
       <CartDrawer
-  isCartOpen={isCartOpen}
-  setIsCartOpen={setIsCartOpen}
-  cartItems={cartItems}
-  removeFromCart={removeFromCart}
-/>
+        isCartOpen={isCartOpen}
+        setIsCartOpen={setIsCartOpen}
+        cartItems={cartItems}
+        removeFromCart={removeFromCart}
+      />
 
       <Footer />
-
     </div>
-
   )
 }
