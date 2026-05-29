@@ -8,7 +8,10 @@ export default function CategoryPage({
   title,
   products,
   addToCart,
+  addToFavorites,
+  setIsFavoritesOpen,
   setSelectedProduct
+  
 }) {
 
   const [search, setSearch] = useState("")
@@ -191,6 +194,8 @@ export default function CategoryPage({
   color={product.color}
   price={product.price}
   addToCart={addToCart}
+  addToFavorites={addToFavorites}
+  setIsFavoritesOpen={setIsFavoritesOpen}
   product={product}
   setSelectedProduct={setSelectedProduct}
 />

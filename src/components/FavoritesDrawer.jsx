@@ -113,7 +113,7 @@ export default function FavoritesDrawer({
                 >
 
                   <p className="text-white/50">
-                    Nenhum favorito ainda ❤️
+                    Nenhum favorito ainda 
                   </p>
 
                 </div>

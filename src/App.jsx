@@ -56,7 +56,6 @@ function addToFavorites(product) {
   ])
 
 }
-
   // REMOVER PRODUTO
   function removeFromCart(index) {
     const updatedCart = cartItems.filter(
@@ -106,7 +105,9 @@ function addToFavorites(product) {
       title={activeCategory}
       products={categories[activeCategory]}
       addToCart={addToCart}
+      addToFavorites={addToFavorites}
       setSelectedProduct={setSelectedProduct}
+      setIsFavoritesOpen={setIsFavoritesOpen}
     />
 
   ) : (
@@ -153,3 +154,4 @@ function addToFavorites(product) {
 
   )
 }
+

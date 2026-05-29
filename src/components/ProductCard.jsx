@@ -8,6 +8,8 @@ export default function ProductCard({
   price,
   product,
   addToCart,
+  addToFavorites,
+  setIsFavoritesOpen,
   setSelectedProduct
 }) {
 
@@ -49,8 +51,12 @@ export default function ProductCard({
 
           {/* FAVORITO */}
           <button
-            type="button"
-            onClick={() => setFavorite(!favorite)}
+  type="button"
+  onClick={(e) => {
+    e.stopPropagation()
+    addToFavorites(product)
+     setFavorite(true)
+     }}
             className="
               absolute
               top-5
@@ -154,7 +160,9 @@ export default function ProductCard({
 
           <button
             type="button"
-            onClick={() => addToCart(product)}
+            onClick={(e) => {
+            e.stopPropagation()
+          addToCart(product) }}
             className="
               w-[min(92%,18.5rem)]
               min-w-[13.5rem]
