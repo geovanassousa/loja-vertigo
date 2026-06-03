@@ -166,7 +166,7 @@ export default function ProductPage({
 
   addToFavorites(product)
 
-  alert("Adicionado aos favoritos ❤️")
+  alert("Adicionado aos favoritos")
 }}
     className="
 

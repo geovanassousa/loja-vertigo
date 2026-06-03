@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
 
-function Footer() {
+function Footer({ goHome, setIsFavoritesOpen }) {
   return (
     <footer className="bg-[#041120] text-white mt-28">
 
@@ -41,12 +41,17 @@ function Footer() {
 
             <div className="flex flex-col gap-3 text-gray-300 text-sm">
 
-              <a
-                href="#"
-                className="hover:text-white transition duration-300"
-              >
-                Home
-              </a>
+              <button
+  onClick={goHome}
+  className="
+    text-left
+    hover:text-white
+    transition
+    duration-300
+  "
+>
+  Home
+</button>
 
               <a
                 href="#contato"
@@ -55,12 +60,19 @@ function Footer() {
                 Contato
               </a>
 
-              <a
-                href="#"
-                className="hover:text-white transition duration-300"
-              >
-                Favoritos
-              </a>
+              <button
+  onClick={() =>
+    setIsFavoritesOpen(true)
+  }
+  className="
+    text-left
+    hover:text-white
+    transition
+    duration-300
+  "
+>
+  Favoritos
+</button>
 
             </div>
           </div>

@@ -50,55 +50,48 @@ export default function ProductCard({
         >
 
           {/* FAVORITO */}
-          <button
+   <button
   type="button"
   onClick={(e) => {
     e.stopPropagation()
     addToFavorites(product)
-     setFavorite(true)
-     }}
-            className="
-              absolute
-              top-5
-              right-5
-              z-20
+    setFavorite(!favorite)
+  }}
+  className="
+    absolute
+    top-5
+    right-5
+    z-20
 
-              flex
-              items-center
-              justify-center
+    flex
+    items-center
+    justify-center
 
-              w-9
-              h-9
+    w-9
+    h-9
 
-              rounded-full
+    rounded-full
 
-              bg-black/30
-              backdrop-blur-md
+    bg-black/30
+    backdrop-blur-md
 
-              transition-all
-              duration-300
+    transition-all
+    duration-300
 
-              hover:bg-black/40
-            "
-          >
+    hover:bg-black/40
+  "
+>
 
-            <Heart
-              size={16}
-              strokeWidth={1.8}
-              className={`
-                transition-all
-                duration-300
+  <Heart
+    size={18}
+    className={
+      favorite
+        ? "fill-white text-white"
+        : "text-white"
+    }
+  />
 
-                ${
-                  favorite
-                    ? "fill-white text-white"
-                    : "text-white/85 hover:text-white"
-                }
-              `}
-            />
-
-          </button>
-
+</button>
           {/* IMAGEM */}
           <div
             className="
@@ -159,37 +152,38 @@ export default function ProductCard({
         >
 
           <button
-            type="button"
-            onClick={(e) => {
-            e.stopPropagation()
-          addToCart(product) }}
-            className="
-              w-[min(92%,18.5rem)]
-              min-w-[13.5rem]
+  type="button"
+  onClick={(e) => {
+    e.stopPropagation()
+    addToCart(product)
+  }}
+  className="
+    w-[min(92%,18.5rem)]
+    min-w-[13.5rem]
 
-              h-9
-              px-6
+    h-9
+    px-6
 
-              rounded-full
+    rounded-full
 
-              bg-white
-              text-black
+    bg-white
+    text-black
 
-              text-[10px]
-              md:text-[11px]
+    text-[10px]
+    md:text-[11px]
 
-              uppercase
+    uppercase
 
-              tracking-[0.18em]
-              md:tracking-[0.2em]
+    tracking-[0.18em]
+    md:tracking-[0.2em]
 
-              whitespace-nowrap
+    whitespace-nowrap
 
-              flex
-              items-center
-              justify-center
-            "
-          >
+    flex
+    items-center
+    justify-center
+  "
+>
             Adicionar à sacola
           </button>
 

@@ -1,0 +1,205 @@
+/* home.css */
+
+.home-page{
+  background: #030817;
+  color: white;
+
+  font-family: 'Inter', sans-serif;
+
+  overflow-x: hidden;
+}
+
+/* HERO */
+
+.home-hero{
+  min-height: calc(100vh - 90px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 40px 55px;
+
+  position: relative;
+}
+
+/* EFEITO AZUL */
+
+.home-hero::before{
+  content: "";
+
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  background: radial-gradient(
+    circle,
+    rgba(24,73,255,0.18) 0%,
+    rgba(24,73,255,0) 70%
+  );
+
+  top: -120px;
+  left: -150px;
+
+  z-index: 0;
+}
+
+/* TEXTO */
+
+.home-hero-content{
+  width: 48%;
+  z-index: 2;
+}
+
+.home-subtitle{
+  letter-spacing: 6px;
+
+  font-size: 0.9rem;
+
+  color: rgba(255,255,255,0.7);
+}
+
+.home-hero-content h2{
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(3rem, 8vw, 7rem);
+
+  font-weight: 400;
+
+  line-height: 0.95;
+
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+
+.home-hero-content p{
+  max-width: 520px;
+
+  font-size: 1.2rem;
+
+  line-height: 1.8;
+
+  color: rgba(255,255,255,0.72);
+
+  margin-bottom: 40px;
+}
+
+/* BOTÕES */
+
+.home-buttons{
+  display: flex;
+  gap: 20px;
+}
+
+.btn-light,
+.btn-dark{
+  padding: 18px 34px;
+
+  border-radius: 50px;
+
+  text-decoration: none;
+
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+
+  transition: 0.3s;
+}
+
+.btn-light{
+  background: white;
+  color: black;
+}
+
+.btn-light:hover{
+  transform: translateY(-3px);
+}
+
+.btn-dark{
+  border: 1px solid rgba(255,255,255,0.15);
+
+  color: white;
+}
+
+.btn-dark:hover{
+  background: rgba(255,255,255,0.06);
+}
+
+/* IMAGEM */
+
+.home-hero-image{
+  width: 42%;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+.home-hero-image img{
+  width: 100%;
+
+  border-radius: 35px;
+
+  object-fit: cover;
+
+  height: 820px;
+}
+
+.home-editorial{
+  position: absolute;
+
+  left: 30px;
+  bottom: 30px;
+}
+
+.home-editorial span{
+  font-size: 0.85rem;
+
+  letter-spacing: 4px;
+
+  color: rgba(255,255,255,0.7);
+}
+
+.home-editorial h3{
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+/* RESPONSIVIDADE */
+
+@media(max-width: 1100px){
+
+  .home-hero{
+    flex-direction: column;
+
+    gap: 50px;
+  }
+
+  .home-hero-content,
+  .home-hero-image{
+    width: 100%;
+  }
+
+  .home-hero-image img{
+    height: 650px;
+  }
+
+}
+
+@media(max-width: 768px){
+
+  .home-hero{
+    padding: 30px;
+  }
+
+  .home-buttons{
+    flex-direction: column;
+  }
+
+  .home-hero-image img{
+    height: 500px;
+  }
+
+}

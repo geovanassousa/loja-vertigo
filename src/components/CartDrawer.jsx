@@ -1,6 +1,5 @@
 import { useState } from "react"
 
-
 export default function CartDrawer({
   isCartOpen,
   setIsCartOpen,
@@ -8,9 +7,8 @@ export default function CartDrawer({
   removeFromCart,
 }) {
 
-  const [mostrarFormulario,
-setMostrarFormulario] =
-useState(false)
+  const [mostrarFormulario, setMostrarFormulario] =
+  useState(false)
 
   const subtotal = cartItems.reduce(
     (acc, item) =>
@@ -250,8 +248,8 @@ useState(false)
 
               <div className="flex justify-center">
 
-   <button
-  onClick={() =>
+    <button
+    onClick={() =>
     setMostrarFormulario(true)
   }
   className="
@@ -304,150 +302,150 @@ useState(false)
       px-4
     "
   >
+<div
+  className="
+    bg-[#081426]
+    px-8
+    py-10
+    rounded-[28px]
+    w-full
+    max-w-[650px]
+    border
+    border-white/10
+  "
+>
 
-    <div
+  <h2 className="text-4xl font-bold mb-8 text-center">
+    Finalizar Compra
+  </h2>
+
+  <div className="flex flex-col gap-5 w-full mt-4 px-2">
+
+    <input
+      type="text"
+      placeholder="Nome completo"
       className="
-        bg-[#081426]
-        px-8
-        py-10
-        rounded-[28px]
         w-full
-        max-w-[650px]
+        h-14
+        rounded-[20px]
+        bg-[#0D1D34]
+        px-6
+        outline-none
         border
         border-white/10
       "
+    />
+
+    <input
+      type="email"
+      placeholder="Seu e-mail"
+      className="
+        w-full
+        h-14
+        rounded-[20px]
+        bg-[#0D1D34]
+        px-6
+        outline-none
+        border
+        border-white/10
+      "
+    />
+
+    <input
+      type="text"
+      placeholder="Telefone"
+      className="
+        w-full
+        h-14
+        rounded-[20px]
+        bg-[#0D1D34]
+        px-6
+        outline-none
+        border
+        border-white/10
+      "
+    />
+
+    <input
+      type="text"
+      placeholder="CEP"
+      className="
+        w-full
+        h-14
+        rounded-[20px]
+        bg-[#0D1D34]
+        px-6
+        outline-none
+        border
+        border-white/10
+      "
+    />
+
+    <input
+      type="text"
+      placeholder="Endereço"
+      className="
+        w-full
+        h-14
+        rounded-[20px]
+        bg-[#0D1D34]
+        px-6
+        outline-none
+        border
+        border-white/10
+      "
+    />
+
+  </div>
+
+  <div className="flex gap-4 mt-10 px-2">
+
+    <button
+      onClick={() =>
+        setMostrarFormulario(false)
+      }
+      className="
+        flex-1
+        h-14
+        rounded-full
+        border
+        border-white/20
+      "
     >
+      Cancelar
+    </button>
 
-      <h2 className="text-4xl font-bold mb-8 text-center">
-        Finalizar Compra
-      </h2>
+    <button
+      onClick={() => {
 
-      <div className="flex flex-col gap-5 w-full mt-4 px-2">
+        alert(
+          'Compra realizada com sucesso 🎉'
+        )
 
-        <input
-          type="text"
-          placeholder="Nome completo"
-          className="
-            w-full
-            h-14
-            rounded-[20px]
-            bg-[#0D1D34]
-            px-6
-            outline-none
-            border
-            border-white/10
-          "
-        />
+        setMostrarFormulario(false)
 
-        <input
-          type="email"
-          placeholder="Seu e-mail"
-          className="
-            w-full
-            h-14
-            rounded-[20px]
-            bg-[#0D1D34]
-            px-6
-            outline-none
-            border
-            border-white/10
-          "
-        />
+      }}
+      className="
+        flex-1
+        h-14
+        rounded-full
+        bg-white
+        text-black
+        font-semibold
+      "
+    >
+      Confirmar Compra
+    </button>
 
-        <input
-          type="text"
-          placeholder="Telefone"
-          className="
-            w-full
-            h-14
-            rounded-[20px]
-            bg-[#0D1D34]
-            px-6
-            outline-none
-            border
-            border-white/10
-          "
-        />
+  </div>
 
-        <input
-          type="text"
-          placeholder="CEP"
-          className="
-            w-full
-            h-14
-            rounded-[20px]
-            bg-[#0D1D34]
-            px-6
-            outline-none
-            border
-            border-white/10
-          "
-        />
-
-        <input
-          type="text"
-          placeholder="Endereço"
-          className="
-            w-full
-            h-14
-            rounded-[20px]
-            bg-[#0D1D34]
-            px-6
-            outline-none
-            border
-            border-white/10
-          "
-        />
-
-      </div>
-
-      <div className="flex gap-4 mt-10 px-2">
-
-        <button
-          onClick={() =>
-            setMostrarFormulario(false)
-          }
-          className="
-            flex-1
-            h-14
-            rounded-full
-            border
-            border-white/20
-          "
-        >
-          Cancelar
-        </button>
-
-        <button
-          onClick={() => {
-
-            alert(
-              'Compra realizada com sucesso 🎉'
-            )
-
-            setMostrarFormulario(false)
-
-          }}
-          className="
-            flex-1
-            h-14
-            rounded-full
-            bg-white
-            text-black
-            font-semibold
-          "
-        >
-          Confirmar Compra
-        </button>
-
-      </div>
-
-    </div>
+</div>
 
   </div>
 
 )}
-    </>
+
+  </>
 
   )
 

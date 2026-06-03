@@ -11,7 +11,6 @@ export default function CategoryPage({
   addToFavorites,
   setIsFavoritesOpen,
   setSelectedProduct
-  
 }) {
 
   const [search, setSearch] = useState("")

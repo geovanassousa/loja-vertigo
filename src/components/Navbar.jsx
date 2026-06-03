@@ -1,278 +1,264 @@
 import logo from "../assets/logo.png"
 
 import {
-  Heart,
-  ShoppingBag
+Heart,
+ShoppingBag
 } from "lucide-react"
 
 export default function Navbar({
-  activeCategory,
-  setActiveCategory,
-  setIsCartOpen,
-  setIsFavoritesOpen
+activeCategory,
+setActiveCategory,
+setIsCartOpen,
+setIsFavoritesOpen,
+goHome,
+setSelectedProduct,
+setIsHome
 }) {
 
-  const categories = [
-    {
-      label: "Casacos",
-      value: "casacos",
-    },
-    {
-      label: "Camisas",
-      value: "camisas",
-    },
-    {
-      label: "Calças",
-      value: "calcas",
-    },
-    {
-      label: "Shorts",
-      value: "shorts",
-    },
-    {
-      label: "Acessórios",
-      value: "acessorios",
-    },
-  ]
+const categories = [
+{
+label: "Casacos",
+value: "casacos",
+},
+{
+label: "Camisas",
+value: "camisas",
+},
+{
+label: "Calças",
+value: "calcas",
+},
+{
+label: "Shorts",
+value: "shorts",
+},
+{
+label: "Acessórios",
+value: "acessorios",
+},
+]
 
-  return (
+return (
+<header
+className="
+fixed
+top-0
+left-0
 
-    <header
+    z-50
+
+    w-full
+    h-20
+
+    border-b
+    border-white/5
+
+    bg-[#041120]/65
+    backdrop-blur-xl
+  "
+>
+
+  <div
+    className="
+      navbar-shell
+
+      mx-auto
+
+      flex
+      h-full
+      w-full
+      max-w-[1600px]
+
+      min-w-0
+      items-center
+    "
+  >
+
+    <div
       className="
-        fixed
-        top-0
-        left-0
+        relative
 
-        z-50
-
-        w-full
+        flex
         h-20
+        w-full
 
-        border-b
-        border-white/5
-
-        bg-[#041120]/65
-        backdrop-blur-xl
+        min-w-0
+        items-center
+        justify-between
       "
     >
 
+      {/* LOGO */}
       <div
         className="
-          navbar-shell
-
-          mx-auto
+          relative
+          z-20
 
           flex
-          h-full
-          w-full
-          max-w-[1600px]
-
-          min-w-0
+          shrink-0
           items-center
+        "
+      >
+
+        <img
+          src={logo}
+          alt="Vertigo"
+          className="
+            h-20
+            w-auto
+
+            cursor-pointer
+            object-contain
+          "
+          onClick={goHome}
+        />
+
+      </div>
+
+      {/* MENU */}
+      <nav
+        aria-label="Menu principal"
+        className="
+          pointer-events-none
+
+          absolute
+          inset-0
+
+          flex
+          items-center
+          justify-center
         "
       >
 
         <div
           className="
-            relative
+            pointer-events-auto
 
             flex
-            h-20
-            w-full
+            max-w-full
+            flex-nowrap
 
-            min-w-0
             items-center
-            justify-between
+            justify-center
+
+            gap-4
+            md:gap-6
+            lg:gap-8
+
+            overflow-x-auto
+
+            [scrollbar-width:none]
+            [-ms-overflow-style:none]
+            [&::-webkit-scrollbar]:hidden
+
+            px-2
+
+            text-[14px]
+            md:text-[15px]
+
+            tracking-[0.08em]
           "
         >
 
-          {/* LOGO */}
-          <div
-            className="
-              relative
-              z-20
+          {categories.map((category) => (
 
-              flex
-              shrink-0
-              items-center
-            "
-          >
-
-            <img
-              src={logo}
-              alt="Vertigo"
-              className="
-                h-20
-                w-auto
-
-                cursor-pointer
-                object-contain
-              "
-              onClick={() =>
-                setActiveCategory("camisas")
-              }
-            />
-
-          </div>
-
-          {/* MENU */}
-          <nav
-            aria-label="Menu principal"
-            className="
-              pointer-events-none
-
-              absolute
-              inset-0
-
-              flex
-              items-center
-              justify-center
-            "
-          >
-
-            <div
-              className="
-                pointer-events-auto
-
-                flex
-                max-w-full
-                flex-nowrap
-
-                items-center
-                justify-center
-
-                gap-4
-                md:gap-6
-                lg:gap-8
-
-                overflow-x-auto
-
-                [scrollbar-width:none]
-                [-ms-overflow-style:none]
-                [&::-webkit-scrollbar]:hidden
-
-                px-2
-
-                text-[14px]
-                md:text-[15px]
-
-                tracking-[0.08em]
-              "
-            >
-
-              {categories.map((category) => (
-
-                <button
-                  key={category.value}
-                  onClick={() =>
-                    setActiveCategory(category.value)
-                  }
-                  className={`
-                    shrink-0
-
-                    transition-all
-                    duration-300
-
-                    hover:text-white
-
-                    ${
-                      activeCategory === category.value
-                        ? "text-white"
-                        : "text-white/55"
-                    }
-                  `}
-                >
-
-                  {category.label}
-
-                </button>
-
-              ))}
-
-            </div>
-
-          </nav>
-
-          {/* FAVORITOS + SACOLA */}
-          <div
-            className="
-              relative
-              z-20
-
-              flex
-              shrink-0
-              items-center
-
-              gap-5
-              md:gap-6
-
-              text-white/70
-            "
-          >
-
-            {/* FAVORITOS */}
-<button
-  type="button"
-  onClick={() =>
-    setIsFavoritesOpen(true)
-  }
-  className="
-    transition-all
-    duration-300
-
-    hover:scale-105
-    hover:text-white
-  "
->
-
-  <Heart
-    size={21}
-    strokeWidth={1.8}
-  />
-
-</button>
-
-            {/* SACOLA */}
             <button
-              type="button"
-              className="
+              key={category.value}
+              onClick={() => {
+                setActiveCategory(category.value)
+                setSelectedProduct(null)
+                setIsHome(false)
+              }}
+              className={`
+                shrink-0
+
                 transition-all
                 duration-300
 
-                hover:scale-105
                 hover:text-white
-              "
+
+                ${
+                  activeCategory === category.value
+                    ? "text-white"
+                    : "text-white/55"
+                }
+              `}
             >
 
-             <button
-  type="button"
-  onClick={() => setIsCartOpen(true)}
-  className="
-    transition-all
-    duration-300
-
-    hover:scale-105
-    hover:text-white
-  "
->
-
-  <ShoppingBag
-    size={21}
-    strokeWidth={1.8}
-  />
-
-</button>
+              {category.label}
 
             </button>
 
-          </div>
+          ))}
 
         </div>
 
+      </nav>
+
+      {/* FAVORITOS + SACOLA */}
+      <div
+        className="
+          relative
+          z-20
+
+          flex
+          shrink-0
+          items-center
+
+          gap-5
+          md:gap-6
+
+          text-white/70
+        "
+      >
+
+        {/* FAVORITOS */}
+        <button
+          type="button"
+          onClick={() => setIsFavoritesOpen(true)}
+          className="
+            transition-all
+            duration-300
+
+            hover:scale-105
+            hover:text-white
+          "
+        >
+
+          <Heart
+            size={21}
+            strokeWidth={1.8}
+          />
+
+        </button>
+
+        {/* SACOLA */}
+        <button
+          type="button"
+          onClick={() => setIsCartOpen(true)}
+          className="
+            transition-all
+            duration-300
+
+            hover:scale-105
+            hover:text-white
+          "
+        >
+
+          <ShoppingBag
+            size={21}
+            strokeWidth={1.8}
+          />
+
+        </button>
+
       </div>
 
-    </header>
+    </div>
 
-  )
+  </div>
 
+</header>
+
+)
 }
